@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "liveStock"
+    }
+  },
+  "defaultProject": "liveStock",
+  "cli": {
+    "analytics": "7828acbc-3db3-4706-9c24-87021241612f"
+  }
 }
