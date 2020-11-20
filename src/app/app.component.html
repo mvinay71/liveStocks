@@ -5,12 +5,32 @@
     <th>Price</th>
     <th>Last Update</th>
   </tr>
-  <tr *ngFor="let stock of stocks">
-    <td [ngStyle]="{'background-color':'green'}">{{stock[0]}}</td>
-    <!-- <td [ngStyle]="{'background-color':getColor(stock)}">{{stock[1]}}</td> -->
-    <td [ngStyle]="{'background-color':'red'}">{{stock[1]}}</td>
-    <td></td>
+  <tr *ngFor="let stock of stocks.keys()">
+    <ng-container *ngIf="stocks.get(stock) as stockValue">
+      <td [ngClass]="{
+        down: stockValue.change === 'DOWN',
+        up: stockValue.change === 'UP',
+        none: stockValue.change === 'NONE'
+      }
+      ">{{ stock }}</td>
+      <!-- <td [ngStyle]="{'background-color':getColor(stock)}">{{stock[1]}}</td> -->
+      <td
+        [ngClass]="{
+          down: stockValue.change === 'DOWN',
+          up: stockValue.change === 'UP',
+          none: stockValue.change === 'NONE'
+        }"
+      >
+        {{ stockValue.value }}
+      </td>
+      <td [ngClass]="{
+        down: stockValue.change === 'DOWN',
+        up: stockValue.change === 'UP',
+        none: stockValue.change === 'NONE'
+      }"
+      >
+        {{ stockValue.change }}
+      </td>
+    </ng-container>
   </tr>
-  
-  
 </table>
